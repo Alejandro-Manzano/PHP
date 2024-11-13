@@ -5,7 +5,7 @@ $color_fondo = isset($_COOKIE['color_fondo']) ? $_COOKIE['color_fondo'] : '#FFFF
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $color = $_POST['color'];
-    setcookie('color_fondo', $color, time() + 86400); 
+    setcookie('color_fondo', $color, time() + 10); 
 }
 
 ?>

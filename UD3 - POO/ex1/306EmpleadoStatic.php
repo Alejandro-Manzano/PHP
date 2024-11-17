@@ -4,12 +4,11 @@ declare(strict_types= 1);
 
 class Empleado {
 
-    private const SUELDO_TOPE = 4000;
-
     public function __construct(
         private string $nombre,
         private string $apellidos,
         private float $sueldo = 2000,
+        private float $sueldoTope = 5000,
         private array $telefonos = []
     ) {}
 
@@ -65,21 +64,27 @@ class Empleado {
 
     // Método para determinar si debe pagar impuestos
     public function debePagarImpuestos(): bool {
-        return $this->sueldo > self::SUELDO_TOPE;
+        return $this->sueldo > $this->sueldoTope;
     }
 
-    public function getSueldoTope(): int{
-        return self::SUELDO_TOPE;
+    public function setSueldoTope(float $sueldoTope): void {
+        $this->sueldoTope = $sueldoTope;
+    }
+
+    public function getSueldoTope(): float{
+        return $this->sueldoTope;
+    }
+
+    public static function toHtml(Empleado $emp): string{
+        return "
+            <h1>Nombre completo: " . $emp->getNombreCompleto(). "</h1>
+            <p>Sueldo: " .$emp->getSueldo()."</p>
+            <p>Sueldo tope: " .$emp->getSueldoTope(). "</p>
+            <p>Impuestos? ".($emp->debePagarImpuestos()?"si":"no")."</p>
+        ";
     }
 
 }
 
-// Ejemplo de uso:
 $empleado = new Empleado("Juan", "Pérez");
-$empleado->anyadirTelefono(123456789);
-$empleado->anyadirTelefono(987654321);
-
-echo "Nombre completo: " . $empleado->getNombreCompleto() . "<br>";
-echo "Teléfonos: " . $empleado->listarTelefonos() . "<br>";
-echo $empleado->debePagarImpuestos() ? "Debe pagar impuestos" : "No debe pagar impuestos";
-echo "<br> Sueldo Tope: ". $empleado->getSueldoTope();
+echo Empleado::toHtml($empleado);

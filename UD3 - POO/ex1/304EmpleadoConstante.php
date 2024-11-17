@@ -4,10 +4,13 @@ declare(strict_types= 1);
 
 class Empleado {
 
+    
+
     public function __construct(
         private string $nombre,
         private string $apellidos,
-        private float $sueldo,
+        private float $sueldo = 2000,
+        private float $sueldoTope = 1000,
         private array $telefonos = []
     ) {}
 
@@ -63,16 +66,28 @@ class Empleado {
 
     // Método para determinar si debe pagar impuestos
     public function debePagarImpuestos(): bool {
-        // El sueldo mayor a 3333 indica que debe pagar impuestos
-        return $this->sueldo > 3333;
+        return $this->sueldo > $this->sueldoTope;
     }
+
+    public function setSueldoTope(float $sueldoTope): void {
+        $this->sueldoTope = $sueldoTope;
+    }
+
+    public function getSueldoTope(): float{
+        return $this->sueldoTope;
+    }
+
 }
 
 // Ejemplo de uso:
-$empleado = new Empleado("Juan", "Pérez", 3500);
+$empleado = new Empleado("Juan", "Pérez");
 $empleado->anyadirTelefono(123456789);
 $empleado->anyadirTelefono(987654321);
 
 echo "Nombre completo: " . $empleado->getNombreCompleto() . "<br>";
 echo "Teléfonos: " . $empleado->listarTelefonos() . "<br>";
 echo $empleado->debePagarImpuestos() ? "Debe pagar impuestos" : "No debe pagar impuestos";
+echo "<br> Sueldo Tope: ". $empleado->getSueldoTope();
+$empleado->setSueldoTope(5000); echo "<br>";
+echo $empleado->debePagarImpuestos() ? "Debe pagar impuestos" : "No debe pagar impuestos";
+echo "<br> Sueldo Tope: ". $empleado->getSueldoTope();

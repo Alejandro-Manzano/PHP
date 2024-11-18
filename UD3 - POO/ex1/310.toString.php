@@ -67,19 +67,24 @@ class Empleado extends Persona {
         }
     }
 
-    public static function toHtml(Empleado $emp): string{
+    /* public static function toHtml(Empleado $emp): string{
         return "
             <h1>Nombre completo: " . $emp->getNombreCompleto(). "</h1>
             <p>Sueldo: " .$emp->getSalario()."</p>
             <p>Impuestos? ".($emp->debePagarImpuestos()?"si":"no")."</p>
+        ";
+    } */
+
+    public function __toString():string{
+        return"
+            Nombre: ".$this->getNombre()."
+            Nombre 2: ".$this->getApellido()."
+            Salario: ".$this->getSalario()."
+            Impuestos: ".($this->debePagarImpuestos()?  "Si": "No")."
         ";
     }
     
 }
 
 $empleado = new Empleado("Alex", "Jimenez", 4000);
-echo $empleado->getNombreCompleto();
-echo $empleado->setSalario(3222). "<br>";
-echo $empleado->getSalario();
-echo $empleado->printTlf(). "<br>";
-echo Empleado::toHtml($empleado);
+echo $empleado;

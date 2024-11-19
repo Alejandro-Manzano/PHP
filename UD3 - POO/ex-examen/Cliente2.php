@@ -40,12 +40,16 @@ class Cliente extends Persona {
         return $this->getEdad() >= 18;
     }
 
+    public function __toString(): string {
+        return "Nombre: " . $this->getNombreCompleto()." ";
+    }
+
 }
 
 $cliente = new Cliente("Javi", "Fdez", 8, 4000);
-echo $cliente->getNombreCompleto();
+/* echo $cliente->getNombreCompleto();
 echo $cliente->getSaldo(). "<br>";
 echo $cliente->getEdad(). "<br>";
-echo "Puede retirar ? " . ($cliente->puedeRetirarFondos() ? "Si" : "No") . "<br>";
-
+echo "Puede retirar ? " . ($cliente->puedeRetirarFondos() ? "Si" : "No") . "<br>"; */
+echo $cliente;
 ?>

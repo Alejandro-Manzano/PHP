@@ -39,7 +39,17 @@
                 echo "Disponible?: {$vuelo['disponible']}<br>";
                 echo "Pais: {$vuelo['idpais']}<br>";
             }
-    
-        }
+    }
+
+   $consulta3 = "SELECT * FROM `pais`";
+    $listaPaises = mysqli_query($conexion, $consulta3);
+
+    if ($listaPaises) {
+        echo "<h2>Datos paises:</h2>"; 
+            foreach ($listaPaises as $pais) {
+                echo "Id: {$pais['idpais']}<br>";
+                echo "Nombre: {$pais['nombre']}<br>";
+            }
+    } 
 
 ?>

@@ -1,11 +1,21 @@
 <?php
-class Pais {
-    public $id;
-    public $nombre;
 
-    public function __construct($id, $nombre) {
-        $this->id = $id;
-        $this->nombre = $nombre;
+class Pais {
+
+    public function __construct(
+        private string $idPais,
+        private string $nombre
+    ) {}
+
+    // Getter para idPais
+    public function getIdPais(): string {
+        return $this->idPais;
+    }
+
+    // Getter para nombre
+    public function getNombre(): string {
+        return $this->nombre;
     }
 }
+
 ?>

@@ -35,7 +35,7 @@
         echo "<h2>Datos vuelos</h2>"; 
             foreach ($listaVuelos as $vuelo) {
                 echo "Id: {$vuelo['idvuelo']}<br>";
-                echo "Plazas: {$vuelo['n_plazas']}<br>";
+                echo "Plazas: {$vuelo['nplazas']}<br>";
                 echo "Disponible?: {$vuelo['disponible']}<br>";
                 echo "Pais: {$vuelo['idpais']}<br>";
             }

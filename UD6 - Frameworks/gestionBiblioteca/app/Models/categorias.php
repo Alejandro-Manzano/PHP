@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class categorias extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
-    // Definir los campos que pueden ser llenados masivamente
-    protected $fillable = [
-        'nombre',
-    ];
+    // Relación con libros: una categoría puede tener muchos libros
+    public function libros()
+    {
+        return $this->hasMany(Libro::class, 'id_categoria');
+    }
 }

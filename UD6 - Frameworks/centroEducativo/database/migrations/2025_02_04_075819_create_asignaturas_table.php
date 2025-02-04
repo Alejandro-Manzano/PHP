@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecuta las migraciones.
      */
     public function up(): void
     {
@@ -15,14 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->unsignedBigInteger('alumno_id');
-
-            $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade'); 
+            // Aquí ya no incluimos alumno_id
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Revierte las migraciones.
      */
     public function down(): void
     {
